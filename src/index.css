@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  object-fit: contain;
 }
 
 code {
@@ -12,8 +13,8 @@ code {
     monospace;
 }
 
-img {
+.img {
   max-width: 90%;
   max-height: 90%;
-  object-fit: scale-down;
+  object-fit: contain;
 }

@@ -5,11 +5,14 @@ export class SlideShow extends Component {
         super(props);
         // https://collectionapi.metmuseum.org/public/collection/v1/objects/[objectID]
         this.state = {
-            data: null
+            data: null,
+            screenHeight: window.screen.height,
+            screenWidth: window.screen.width
         }
     }
 
     componentDidMount() {
+        document.body.style.maxHeight = window.screen.height * .9;
         fetch('/MetSummary.json')
             .then(data => data.json())
             .then(result => {
@@ -49,7 +52,7 @@ export class SlideShow extends Component {
 
     render() {
         return (<div>
-            <img src={this.state.imageUrl} className="img" alt=""/>
+            <img src={this.state.imageUrl} className="img" alt="" height={this.state.screenHeight * 0.9} />
         </div>)
     }
 }
