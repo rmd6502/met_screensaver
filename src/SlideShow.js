@@ -50,8 +50,22 @@ export class SlideShow extends Component {
         return nextState.refresh;
     }
 
+    openFullscreen(elem) {
+        if (!elem) { return; }
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+          elem.msRequestFullscreen();
+        }
+      }
+
     render() {
-        return (<div>
+        this.openFullscreen(document.image);
+        return (<div allowFullScreen id="image">
             <img src={this.state.imageUrl} className="img" alt="" height={this.state.screenHeight * 0.9} />
         </div>)
     }
